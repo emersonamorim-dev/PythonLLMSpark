@@ -26,9 +26,6 @@ Os testes podem ser executados com `python -m unittest discover tests`.
 
 Um `Dockerfile` e um `docker-compose.yml` estão incluídos para a implantação com Docker. Para construir a imagem Docker, execute `docker build -t my_app .`. Para iniciar a aplicação com Docker Compose, execute `docker-compose up`.
 
-## Contribuição
-
-Contribuições são bem-vindas! Por favor, faça um fork do repositório e crie um Pull Request com suas alterações.
 
 ## Autor
 Emerson Amorim
