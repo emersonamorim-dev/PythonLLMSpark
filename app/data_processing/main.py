@@ -5,7 +5,7 @@ from spark_processing import process_data
 def main():
     spark = SparkSession.builder \
         .appName("LLMApplication") \
-        .config("spark.mongodb.input.uri", "mongodb://localhost:27017/test.myCollection") \
+        .config("spark.mongodb.input.uri", "mongodb://localhost:27017/PythonLLMSpark") \
         .getOrCreate()
 
     ssc = StreamingContext(spark.sparkContext, 1)
