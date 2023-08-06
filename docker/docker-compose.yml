@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - kafka
+      - spark
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/PythonLLMSpark
+      - KAFKA_SERVERS=kafka:9092
+      - SPARK_MASTER_URL=spark://spark:7077
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    ports:
+      - "9092:9092"
+
+  spark:
+    image: bitnami/spark:latest
+    ports:
+      - "7077:7077"
+      - "8081:8081"

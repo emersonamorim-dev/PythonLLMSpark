@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-application
+  labels:
+    app: llm-application
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: llm-application
+  template:
+    metadata:
+      labels:
+        app: llm-application
+    spec:
+      containers:
+      - name: llm-application
+        image: registry/llm-application:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MONGODB_URI
+        - name: KAFKA_SERVERS
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: KAFKA_SERVERS
+        - name: ZOOKEEPER_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: ZOOKEEPER_SERVER
+        volumeMounts:
+        - name: app-logs
+          mountPath: /app/logs
+      volumes:
+      - name: app-logs
+        emptyDir: {}

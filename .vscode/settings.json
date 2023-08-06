@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./app/data_ingestion",
+        "./app/data_processing",
+        "./app/llm_model",
+        "./app/data_storage",
+        "./app"
+    ]
+}
